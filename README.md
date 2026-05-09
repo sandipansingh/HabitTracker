@@ -110,6 +110,7 @@ npm install
 MONGO_URI=<your_mongodb_connection_string>
 JWT_SECRET=<your_jwt_secret>
 PORT=5000
+ALLOWED_ORIGINS=http://localhost:5173,https://habit-tracker-plum-chi.vercel.app
 ```
 
 4. Start the backend server:

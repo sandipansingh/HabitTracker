@@ -1,9 +1,10 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
+import { env } from '../config/env.js';
 
 const createToken = (user) => {
-  const secret = process.env.JWT_SECRET;
+  const secret = env.JWT_SECRET;
   if (!secret) throw new Error('JWT_SECRET is not configured');
   return jwt.sign(
     { userId: user._id.toString(), email: user.email, name: user.name || '' },

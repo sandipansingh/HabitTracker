@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-
+import { env } from "../config/env.js";
 const getTokenFromHeader = (req) => {
   const header = req.headers.authorization || req.headers.Authorization;
   if (!header || typeof header !== 'string') return null;
@@ -13,7 +13,7 @@ export const requireAuth = (req, res, next) => {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
-  const secret = process.env.JWT_SECRET;
+  const secret = env.JWT_SECRET;
   if (!secret) {
     return res.status(500).json({ error: 'JWT secret is not configured' });
   }
